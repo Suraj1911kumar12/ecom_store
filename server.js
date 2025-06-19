@@ -17,6 +17,7 @@ const profileWeb = require("./src/routes/web/profile");
 const webProducts = require("./src/routes/web/productRoute");
 const webAddress = require("./src/routes/web/addressRoute");
 const webCart = require("./src/routes/web/cartRoute");
+const webWishlist = require("./src/routes/web/wishlistRoute");
 const webBanner = require("./src/routes/web/bannerRouteWeb");
 
 const { adminMiddleware } = require("./src/middlewares/admin/adminMidd");
@@ -41,6 +42,7 @@ app.use("/api/web/products", webProducts);
 app.use("/api/web", webMiddleware, profileWeb);
 app.use("/api/web/address", webMiddleware, webAddress);
 app.use("/api/web/cart", webMiddleware, webCart);
+app.use("/api/web/wishlist", webMiddleware, webWishlist);
 
 const startServer = async () => {
   try {

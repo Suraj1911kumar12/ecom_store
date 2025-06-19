@@ -20,8 +20,8 @@ router.post("/", async (req, res) => {
     : {};
   try {
     let products;
-    let totalProduct = await ProductsModel.find();
-    let total = totalProduct?.length;
+    let total = await ProductsModel.countDocuments();
+    console.log("total", total);
     if (all) {
       products = await ProductsModel.find(searchQuery);
     } else {

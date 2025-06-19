@@ -61,6 +61,10 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    isInWishlist: {
+      type: Boolean,
+      default: false,
+    },
     features: {
       type: [String],
       required: true,

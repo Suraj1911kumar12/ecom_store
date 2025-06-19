@@ -14,6 +14,10 @@ router.post("/add", async (req, res) => {
   }
   try {
     const slug = slugConverter(name);
+    const brand = await BrandModels.findOne({ slug });
+    if (brand) {
+      return errorResponse(res, "Brand with this name already exists!!", 400);
+    }
     const newBrand = await BrandModels.create({ name, logo, slug });
     return successResponse(res, "Brand is created!!", 201, newBrand);
   } catch (error) {
