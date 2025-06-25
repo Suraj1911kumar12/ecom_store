@@ -98,17 +98,17 @@ router.post("/", async (req, res) => {
     let products;
     const totalproduct = await ProductsModel.find(searchQuery)
       .populate("category")
-      .populate("Brand");
+      .populate("brand");
     let total = totalproduct?.length;
 
     if (all) {
       products = await ProductsModel.find(searchQuery)
         .populate("category")
-        .populate("Brand");
+        .populate("brand");
     } else {
       products = await ProductsModel.find(searchQuery)
         .populate("category")
-        .populate("Brand")
+        .populate("brand")
         .skip((page - 1) * limit)
         .limit(limit);
     }

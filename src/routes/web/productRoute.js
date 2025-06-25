@@ -21,13 +21,16 @@ router.post("/", async (req, res) => {
   try {
     let products;
     let total = await ProductsModel.countDocuments();
-    console.log("total", total);
     if (all) {
-      products = await ProductsModel.find(searchQuery);
+      products = await ProductsModel.find(searchQuery)
+        .populate("brand")
+        .populate("category");
     } else {
       products = await ProductsModel.find(searchQuery)
         .skip((page - 1) * limit)
-        .limit(limit);
+        .limit(limit)
+        .populate("brand")
+        .populate("category");
     }
 
     const data = {
@@ -46,7 +49,9 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const product = await ProductsModel.findById(id);
+    const product = await ProductsModel.findById(id)
+      .populate("brand")
+      .populate("category");
     if (!product) {
       return errorResponse(res, "Product not found!!", 404);
     } else {

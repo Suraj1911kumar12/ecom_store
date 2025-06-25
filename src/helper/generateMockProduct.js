@@ -9,8 +9,7 @@ const generateMockProduct = async () => {
     name: product.name,
     brand:
       index % 2 === 0 ? "685151d46968ba8acf8af831" : "6851679325aca5ef52584eb8",
-    category:
-      index % 2 === 0 ? "684803b28d71f757a0e726bc" : "68480ea9db6b58f13a36af37",
+    category: "68528745372cf0ca795a8297",
     description: product.description,
     price: product.price,
     discount: product.discount,

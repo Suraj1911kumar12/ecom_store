@@ -10,7 +10,7 @@ router.post("/register", async (req, res) => {
   const { name, email, mobile, password, userName } = req.body;
   const validations = [
     { name: "name", value: name, msg: "Name is required" },
-    { name: "username", value: userName, msg: "User Name is required" },
+    // { name: "username", value: userName, msg: "User Name is required" },
     { name: "email", value: email, msg: "Email is required" },
     {
       name: "mobile",
@@ -37,7 +37,7 @@ router.post("/register", async (req, res) => {
       name,
       email,
       mobile,
-      userName,
+      userName: email,
       password: bcrypt.hashSync(password, 10),
       userType: "user",
     });
